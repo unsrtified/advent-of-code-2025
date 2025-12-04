@@ -4,6 +4,6 @@ module Utils
   module_function
 
   def read_lines(filename)
-    File.read(filename).lines
+    File.read(filename).lines.map(&:strip)
   end
 end
