@@ -8,6 +8,23 @@ module Utils
   end
 end
 
+class Numeric
+  def min(other) = self <= other ? self : other
+end
+
+class String
+  def to_ints(sep = ",") = split(sep).map(&:to_i)
+end
+
+class Array
+  def every_combination = (1..size).reduce([]) { _1.chain(combination(_2)) }.to_enum
+
+  def update_at(*specifiers)
+    specifiers.each { self[it] = yield self[it] }
+    self
+  end
+end
+
 module Enumerable
   def scan(initial)
     state = initial.dup
